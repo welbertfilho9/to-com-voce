@@ -16,14 +16,14 @@ export const KNOWN_PLACES: KnownPlace[] = [
   },
   {
     id: 'orizon',
-    name: 'Orizon (Ecoparque Maceió)',
-    shortName: 'Orizon',
+    name: 'Ecoparque Maceió (Orizon)',
+    shortName: 'Ecoparque Maceió',
     category: 'work',
-    address: 'Unnamed Road',
+    address: 'Ecoparque Maceió',
     neighborhood: 'Benedito Bentes, Maceió - AL',
     latitude: -9.556395,
     longitude: -35.7281169,
-    notes: 'Unnamed Road - Benedito Bentes, Maceió - AL. Estágio Orizon.',
+    notes: 'Ecoparque Maceió - Benedito Bentes (Estágio Orizon).',
     icon: '🏢',
     googleMapsUrl: 'https://maps.app.goo.gl/JNkffNj8avAdyx138?g_st=ac'
   },

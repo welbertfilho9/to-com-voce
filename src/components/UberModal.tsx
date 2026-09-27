@@ -49,6 +49,7 @@ export const UberModal: React.FC<UberModalProps> = ({
   
   const [copiedDest, setCopiedDest] = useState(false);
   const [copiedFor99, setCopiedFor99] = useState(false);
+  const [copiedForUber, setCopiedForUber] = useState(false);
 
   // Sync selected destination if defaultPlace changes
   React.useEffect(() => {
@@ -217,6 +218,13 @@ export const UberModal: React.FC<UberModalProps> = ({
             </p>
           </div>
 
+          {/* UBER COPIED ALERT */}
+          {copiedForUber && (
+            <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-semibold animate-in fade-in">
+              ✅ <strong>Endereço copiado!</strong> Abrindo Uber com destino <em>{destCleanAddress}</em>...
+            </div>
+          )}
+
           {/* 99 COPIED ALERT */}
           {copiedFor99 && (
             <div className="p-3 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-semibold animate-in fade-in">
@@ -232,7 +240,8 @@ export const UberModal: React.FC<UberModalProps> = ({
               target="_top"
               onClick={() => {
                 handleCopyDestAddress();
-                setTimeout(onClose, 1200);
+                setCopiedForUber(true);
+                setTimeout(onClose, 1800);
               }}
               className="w-full py-4 px-4 rounded-2xl bg-black hover:bg-slate-800 text-white font-black text-sm shadow-xl shadow-black/25 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]"
             >
