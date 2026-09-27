@@ -28,7 +28,7 @@ export const DecisionPointModal: React.FC<DecisionPointModalProps> = ({
     },
     {
       tripId: 'terminal_casa',
-      title: 'Voltar para Casa',
+      title: 'Voltar para Casa (Clima Bom)',
       subtitle: 'Rua Quinze, 101, Clima Bom',
       icon: '🏠',
       bgClass: 'bg-emerald-50 border-emerald-200 text-emerald-900 hover:bg-emerald-100'

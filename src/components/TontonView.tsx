@@ -90,16 +90,16 @@ export const TontonView: React.FC<TontonViewProps> = ({
     if (activeTab === 'custom') return isCustom;
     if (activeTab === 'daily') {
       return (
-        trip.id === 'orizon_to_home' ||
-        trip.id === 'home_to_terminal_bb' ||
-        trip.id === 'terminal_bb_to_ufal'
+        trip.id === 'casa_orizon' ||
+        trip.id === 'orizon_terminal' ||
+        trip.id === 'terminal_ufal' ||
+        trip.id === 'terminal_casa'
       );
     }
     if (activeTab === 'leisure') {
       return (
-        trip.id === 'home_to_shopping_patio' ||
-        trip.id === 'shopping_patio_to_home' ||
-        trip.id === 'ufal_to_shopping_parque'
+        trip.id === 'ufal_paripueira' ||
+        trip.id === 'paripueira_casa'
       );
     }
     return true;
@@ -110,16 +110,21 @@ export const TontonView: React.FC<TontonViewProps> = ({
       {/* Intimate Reassurance Banner */}
       <div className="bg-gradient-to-r from-rose-50/90 via-white to-indigo-50/90 rounded-3xl p-4 border border-rose-200/70 shadow-xs flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-500 to-indigo-600 flex items-center justify-center text-white shadow-sm shadow-rose-500/20">
-              <Heart className="w-5 h-5 fill-white" />
+          <div className="relative shrink-0">
+            <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-sm border border-rose-200/80 bg-rose-50 flex items-center justify-center">
+              <img
+                src="/logo.jpg"
+                alt="Tô Com Você"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-sm font-bold text-slate-900 tracking-tight">
-                Calma, Tonton. Tô com você.
+                Calma, amor. Tô com você.
               </h2>
             </div>
             <p className="text-xs text-slate-500 font-medium">
@@ -459,7 +464,7 @@ export const TontonView: React.FC<TontonViewProps> = ({
                     : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                Diárias (Trabalho/Casa)
+                Diárias (Trabalho/Casa (Clima Bom))
               </button>
               <button
                 onClick={() => setActiveTab('leisure')}

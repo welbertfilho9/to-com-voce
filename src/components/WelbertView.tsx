@@ -8,7 +8,6 @@ import {
   MessageCircle,
   MapPin,
   Clock,
-  Battery,
   AlertOctagon,
   ExternalLink,
   Sliders,
@@ -234,8 +233,8 @@ export const WelbertView: React.FC<WelbertViewProps> = ({
 
                 <div className="pt-2 border-t border-slate-700/80 flex items-center justify-between text-[11px]">
                   <span className="text-slate-400 flex items-center gap-1.5">
-                    <Battery className="w-3.5 h-3.5 text-emerald-400" />
-                    iPhone ~{telemetry.batteryLevel || 85}%
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Sinal GPS sincronizado
                   </span>
                   <a
                     href={`https://maps.google.com/?q=${currentLat},${currentLng}`}

@@ -37,7 +37,7 @@ export function getSmartRoutineSuggestion(now: Date = new Date()): RoutineSugges
       trip,
       title: 'Hora de voltar! 🚐',
       subtitle: 'A van costuma sair às 14:00 para o Terminal Benedito Bentes',
-      reason: 'No Terminal você poderá decidir se vai para a UFAL ou direto para Casa.',
+      reason: 'No Terminal você poderá decidir se vai para a UFAL ou direto para Casa (Clima Bom).',
       timeContext: 'Segunda a Sexta • 14h'
     };
   }
@@ -49,7 +49,7 @@ export function getSmartRoutineSuggestion(now: Date = new Date()): RoutineSugges
       trip,
       title: 'Sexta-feira à noite! 🌴',
       subtitle: 'Ônibus da UFAL para Paripueira (~22h)',
-      reason: 'Hora de ir curtir o fim de semana descansando em Paripueira.',
+      reason: 'Hora de ir curtir o fim de semana descansando em Paripueira (R. do Angelim).',
       timeContext: 'Sexta • ~22h'
     };
   }

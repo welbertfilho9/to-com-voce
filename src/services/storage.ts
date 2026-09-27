@@ -81,8 +81,7 @@ export function getStoredTelemetry(): CompanionTelemetry {
     isSharing: false,
     activeJourney: null,
     lastKnownLocation: null,
-    sosAlert: null,
-    batteryLevel: 85
+    sosAlert: null
   };
 
   try {

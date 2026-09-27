@@ -26,7 +26,7 @@ export const CreateRouteModal: React.FC<CreateRouteModalProps> = ({
   onSaveRoute
 }) => {
   const [name, setName] = useState('');
-  const [originName, setOriginName] = useState('Casa (Rua Quinze - Clima Bom)');
+  const [originName, setOriginName] = useState('Casa (Clima Bom)');
   const [destinationName, setDestinationName] = useState('UFAL - Campus A.C. Simões');
   const [routineHint, setRoutineHint] = useState('');
   const [estimatedMinutes, setEstimatedMinutes] = useState(35);

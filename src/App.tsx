@@ -145,8 +145,7 @@ export default function App() {
             latitude: currentLat,
             longitude: currentLng
           }
-        : telemetry.sosAlert,
-      batteryLevel: telemetry.batteryLevel || 85
+        : telemetry.sosAlert
     };
     setTelemetry(updated);
     saveStoredTelemetry(updated);

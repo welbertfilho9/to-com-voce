@@ -20,10 +20,13 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-2xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
         {/* Brand */}
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-indigo-500 via-rose-500 to-amber-500 p-0.5 shadow-sm shadow-indigo-500/10">
-            <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-rose-500">
-              <Compass className="w-4 h-4 stroke-[2.2]" />
-            </div>
+          <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-sm border border-rose-200/60 bg-amber-50 shrink-0">
+            <img
+              src="/logo.jpg"
+              alt="Tô Com Você"
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div>
             <div className="flex items-center gap-1.5">

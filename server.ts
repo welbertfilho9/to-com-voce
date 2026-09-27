@@ -11,7 +11,6 @@ interface ActiveJourneyState {
   activeJourney: any | null;
   lastKnownLocation: any | null;
   sosAlert: any | null;
-  batteryLevel?: number;
   lastUpdated: string;
 }
 
@@ -21,7 +20,6 @@ let globalTelemetry: ActiveJourneyState = {
   activeJourney: null,
   lastKnownLocation: null,
   sosAlert: null,
-  batteryLevel: 85,
   lastUpdated: new Date().toISOString()
 };
 
@@ -52,7 +50,6 @@ async function start() {
       activeJourney: null,
       lastKnownLocation: null,
       sosAlert: null,
-      batteryLevel: 85,
       lastUpdated: new Date().toISOString()
     };
     res.json({ success: true });

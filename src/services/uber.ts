@@ -10,6 +10,9 @@ export function getCleanFullAddress(place: KnownPlace): string {
   if (place.id === 'casa') {
     return 'R. Quinze, 101 - Clima Bom, Maceió - AL, 57063-505';
   }
+  if (place.id === 'paripueira') {
+    return 'R. do Angelim, 650, Paripueira - AL, 57935-000';
+  }
   if (place.id === 'orizon') {
     return 'Ecoparque Maceió - Benedito Bentes, Maceió - AL';
   }
@@ -26,7 +29,8 @@ export function getCleanFullAddress(place: KnownPlace): string {
  * Returns a clean business/building name without informal notes or brackets
  */
 export function getCleanPlaceTitle(place: KnownPlace): string {
-  if (place.id === 'casa') return 'Casa';
+  if (place.id === 'casa') return 'Casa (Clima Bom)';
+  if (place.id === 'paripueira') return 'Paripueira';
   if (place.id === 'orizon') return 'Ecoparque Maceió';
   if (place.id === 'terminal_bb') return 'Terminal Integrado Benedito Bentes';
   if (place.id === 'ufal') return 'Universidade Federal de Alagoas (UFAL)';

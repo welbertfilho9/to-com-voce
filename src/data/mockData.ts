@@ -3,8 +3,8 @@ import { KnownPlace, PresetTrip } from '../types';
 export const KNOWN_PLACES: KnownPlace[] = [
   {
     id: 'casa',
-    name: 'Casa',
-    shortName: 'Casa',
+    name: 'Casa (Clima Bom)',
+    shortName: 'Casa (Clima Bom)',
     category: 'home',
     address: 'R. Quinze, 101',
     neighborhood: 'Clima Bom, Maceió - AL, 57063-505',
@@ -56,12 +56,13 @@ export const KNOWN_PLACES: KnownPlace[] = [
     name: 'Paripueira (Fim de Semana)',
     shortName: 'Paripueira',
     category: 'weekend',
-    address: 'Centro de Paripueira',
-    neighborhood: 'Litoral Norte, AL',
-    latitude: -9.4678,
-    longitude: -35.5539,
-    notes: 'Ônibus sai da UFAL na sexta-feira às 22:00.',
-    icon: '🌴'
+    address: 'R. do Angelim, 650, Paripueira - AL, 57935-000',
+    neighborhood: 'Paripueira - Litoral Norte, AL',
+    latitude: -9.4584,
+    longitude: -35.5453,
+    notes: 'R. do Angelim, 650, Paripueira - AL, 57935-000. Ônibus sai da UFAL na sexta-feira às 22:00.',
+    icon: '🌴',
+    googleMapsUrl: 'https://maps.app.goo.gl/H2rjVdZ241oJJb5SA?g_st=ac'
   },
   {
     id: 'patio_maceio',
@@ -128,10 +129,10 @@ export const KNOWN_PLACES: KnownPlace[] = [
 export const PRESET_TRIPS: PresetTrip[] = [
   {
     id: 'casa_orizon',
-    name: 'Casa → Orizon (Estágio)',
+    name: 'Casa (Clima Bom) → Orizon (Estágio)',
     originId: 'casa',
     destinationId: 'orizon',
-    originName: 'Casa (Rua Quinze - Clima Bom)',
+    originName: 'Casa (Clima Bom)',
     destinationName: 'Orizon Ecoparque Maceió',
     estimatedTotalMinutes: 45,
     routineHint: 'Segunda a Sexta • Manhã cedo (06:30 - 07:30)',
@@ -140,7 +141,7 @@ export const PRESET_TRIPS: PresetTrip[] = [
         id: 'co_1',
         stepNumber: 1,
         type: 'walk',
-        title: 'Sair de Casa',
+        title: 'Sair de Casa (Clima Bom)',
         instruction: 'Saia com calma e caminhe até o ponto de embarque combinado.',
         detail: 'Rua Quinze em direção à rua principal do Clima Bom.',
         locationName: 'Clima Bom',
@@ -217,7 +218,7 @@ export const PRESET_TRIPS: PresetTrip[] = [
           },
           {
             id: 'go_casa',
-            label: '🏠 Voltar para Casa',
+            label: '🏠 Voltar para Casa (Clima Bom)',
             targetTripId: 'terminal_casa',
             icon: '🏠'
           },
@@ -291,13 +292,13 @@ export const PRESET_TRIPS: PresetTrip[] = [
   },
   {
     id: 'terminal_casa',
-    name: 'Terminal Benedito Bentes → Casa',
+    name: 'Terminal Benedito Bentes → Casa (Clima Bom)',
     originId: 'terminal_bb',
     destinationId: 'casa',
     originName: 'Terminal B. Bentes',
-    destinationName: 'Casa (Rua Quinze - Clima Bom)',
+    destinationName: 'Casa (Clima Bom)',
     estimatedTotalMinutes: 30,
-    routineHint: 'Volta para casa a partir do Terminal',
+    routineHint: 'Volta para Casa (Clima Bom) a partir do Terminal',
     steps: [
       {
         id: 'tc_1',
@@ -323,8 +324,8 @@ export const PRESET_TRIPS: PresetTrip[] = [
         id: 'tc_3',
         stepNumber: 3,
         type: 'arrive',
-        title: 'Chegada em Casa',
-        instruction: 'Você chegou em casa! Rua Quinze, 101. Bom descanso ❤️',
+        title: 'Chegada em Casa (Clima Bom)',
+        instruction: 'Você chegou em Casa (Clima Bom)! Rua Quinze, 101. Bom descanso ❤️',
         detail: 'Viagem finalizada com sucesso.',
         locationName: 'Rua Quinze, 101, Clima Bom',
         estimatedMinutes: 5
@@ -337,7 +338,7 @@ export const PRESET_TRIPS: PresetTrip[] = [
     originId: 'ufal',
     destinationId: 'paripueira',
     originName: 'UFAL',
-    destinationName: 'Paripueira',
+    destinationName: 'Paripueira (R. do Angelim, 650)',
     estimatedTotalMinutes: 55,
     routineHint: 'Sexta-feira • Noite por volta das 22:00',
     steps: [
@@ -367,20 +368,20 @@ export const PRESET_TRIPS: PresetTrip[] = [
         stepNumber: 3,
         type: 'arrive',
         title: 'Chegada em Paripueira',
-        instruction: 'Você chegou em Paripueira! Bom fim de semana ❤️',
-        detail: 'Desembarque no ponto central seguro.',
-        locationName: 'Centro de Paripueira',
+        instruction: 'Você chegou em Paripueira (R. do Angelim, 650)! Bom fim de semana ❤️',
+        detail: 'R. do Angelim, 650 - Paripueira.',
+        locationName: 'R. do Angelim, 650, Paripueira',
         estimatedMinutes: 5
       }
     ]
   },
   {
     id: 'paripueira_casa',
-    name: 'Paripueira → Casa (Domingo)',
+    name: 'Paripueira → Casa (Clima Bom) (Domingo)',
     originId: 'paripueira',
     destinationId: 'casa',
     originName: 'Paripueira',
-    destinationName: 'Casa (Rua Quinze - Clima Bom)',
+    destinationName: 'Casa (Clima Bom)',
     estimatedTotalMinutes: 60,
     routineHint: 'Domingo • Tarde / Noite retorno a Maceió',
     steps: [
@@ -391,7 +392,7 @@ export const PRESET_TRIPS: PresetTrip[] = [
         title: 'Dirigir-se ao ponto de Paripueira',
         instruction: 'Vá até o ponto de ônibus intermunicipal com destino a Maceió.',
         detail: 'Aguarde o ônibus sentido Centro / Rodoviária / Maceió.',
-        locationName: 'Ponto Central de Paripueira',
+        locationName: 'Ponto de Paripueira (R. do Angelim / Centro)',
         estimatedMinutes: 10
       },
       {
@@ -408,10 +409,10 @@ export const PRESET_TRIPS: PresetTrip[] = [
         id: 'pc_3',
         stepNumber: 3,
         type: 'arrive',
-        title: 'Chegada em Casa',
+        title: 'Chegada em Casa (Clima Bom)',
         instruction: 'Bem-vinda de volta para casa! ❤️',
         detail: 'Rua Quinze, 101, Clima Bom.',
-        locationName: 'Casa',
+        locationName: 'Casa (Clima Bom)',
         estimatedMinutes: 5
       }
     ]

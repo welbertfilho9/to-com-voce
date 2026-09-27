@@ -16,14 +16,19 @@ export const InstallGuideModal: React.FC<InstallGuideModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-150">
       <div className="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white p-5 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-indigo-600 via-rose-600 to-rose-700 text-white p-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-              <Smartphone className="w-6 h-6 text-white" />
+            <div className="w-11 h-11 rounded-2xl overflow-hidden border border-white/30 bg-white shrink-0 shadow-sm">
+              <img
+                src="/logo.jpg"
+                alt="Tô Com Você"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
-              <h3 className="font-bold text-lg leading-tight">Instalar no iPhone 14</h3>
-              <p className="text-indigo-200 text-xs">Sem App Store • Ocupa menos de 1 MB</p>
+              <h3 className="font-bold text-lg leading-tight">Instalar Tô Com Você no iPhone</h3>
+              <p className="text-rose-100 text-xs">Sem App Store • Ocupa menos de 1 MB</p>
             </div>
           </div>
           <button
@@ -93,7 +98,7 @@ export const InstallGuideModal: React.FC<InstallGuideModalProps> = ({
           <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-start gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
             <span>
-              Pronto! O ícone 🧭 <strong>Estou com Você</strong> aparecerá na tela do celular como qualquer aplicativo, abrindo em tela cheia e funcionando mesmo com sinal fraco.
+              Pronto! O ícone ❤️ <strong>Tô Com Você</strong> aparecerá na tela do celular como qualquer aplicativo, abrindo em tela cheia e funcionando mesmo com sinal fraco.
             </span>
           </div>
         </div>

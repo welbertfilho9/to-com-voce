@@ -110,5 +110,4 @@ export interface CompanionTelemetry {
     latitude: number;
     longitude: number;
   } | null;
-  batteryLevel?: number;
 }
