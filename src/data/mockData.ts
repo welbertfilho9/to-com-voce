@@ -16,13 +16,13 @@ export const KNOWN_PLACES: KnownPlace[] = [
   {
     id: 'orizon',
     name: 'Orizon / Ecoparque Maceió',
-    shortName: 'Orizon',
+    shortName: 'Orizon (Ecoparque)',
     category: 'work',
-    address: 'Rodovia AL-101 Norte - Ecoparque Maceió',
-    neighborhood: 'Maceió - AL',
-    latitude: -9.5398,
-    longitude: -35.7042,
-    notes: 'Local do estágio. Início às 08:00. Saída da van às 14:00.',
+    address: 'Ecoparque Maceió - Estrada AL-105 / Rua Em Projeto 7257, s/n',
+    neighborhood: 'Benedito Bentes, Maceió - AL, CEP 57084-415',
+    latitude: -9.5583,
+    longitude: -35.6880,
+    notes: 'Local do estágio no Ecoparque Maceió (CTR Benedito Bentes). Início às 08:00. Saída da van às 14:00 para o Terminal.',
     icon: '🏢'
   },
   {

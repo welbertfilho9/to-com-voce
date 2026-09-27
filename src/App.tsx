@@ -17,7 +17,6 @@ import { LostModal } from './components/LostModal';
 import { WhereAmIModal } from './components/WhereAmIModal';
 import { UberModal } from './components/UberModal';
 import { DecisionPointModal } from './components/DecisionPointModal';
-import { ArchitectureDocModal } from './components/ArchitectureDocModal';
 import { InstallGuideModal } from './components/InstallGuideModal';
 import { CreateRouteModal } from './components/CreateRouteModal';
 import { PanicPoliceModal } from './components/PanicPoliceModal';
@@ -40,7 +39,6 @@ export default function App() {
   const [uberModalOpen, setUberModalOpen] = useState(false);
   const [selectedUberPlace, setSelectedUberPlace] = useState<KnownPlace | null>(null);
   const [decisionModalOpen, setDecisionModalOpen] = useState(false);
-  const [docModalOpen, setDocModalOpen] = useState(false);
   const [installModalOpen, setInstallModalOpen] = useState(false);
   const [createRouteModalOpen, setCreateRouteModalOpen] = useState(false);
   const [panicPoliceModalOpen, setPanicPoliceModalOpen] = useState(false);
@@ -331,7 +329,6 @@ export default function App() {
         currentRole={role}
         onRoleChange={setRole}
         activeJourney={activeJourney}
-        onOpenDoc={() => setDocModalOpen(true)}
         onOpenInstallGuide={() => setInstallModalOpen(true)}
       />
 
@@ -407,18 +404,14 @@ export default function App() {
         isOpen={uberModalOpen}
         onClose={() => setUberModalOpen(false)}
         defaultPlace={selectedUberPlace}
+        currentLat={currentLat}
+        currentLng={currentLng}
       />
 
       <DecisionPointModal
         isOpen={decisionModalOpen}
         onClose={() => setDecisionModalOpen(false)}
         onSelectTrip={(trip) => handleStartTrip(trip, true)}
-      />
-
-      {/* 34-Topic Strategic Architecture Dossier */}
-      <ArchitectureDocModal
-        isOpen={docModalOpen}
-        onClose={() => setDocModalOpen(false)}
       />
 
       {/* PWA iPhone 14 Installation Guide */}
