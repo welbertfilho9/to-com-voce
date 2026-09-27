@@ -59,10 +59,10 @@ export function getSmartRoutineSuggestion(now: Date = new Date()): RoutineSugges
     const trip = PRESET_TRIPS.find(t => t.id === 'paripueira_casa') || PRESET_TRIPS[5];
     return {
       trip,
-      title: 'Volta para Maceió 🏠',
-      subtitle: 'Retorno de Paripueira para Casa (Clima Bom)',
-      reason: 'Preparando a semana com calma.',
-      timeContext: 'Domingo • Tarde/Noite'
+      title: 'Volta para Maceió no Domingo 🏠',
+      subtitle: 'Paripueira ➔ Maceió Shopping ➔ Casa (Rua Quinze, 101)',
+      reason: 'Conexão pelo Maceió Shopping e ônibus até a Rua Quinze (Clima Bom).',
+      timeContext: 'Domingo • Retorno para Casa'
     };
   }
 

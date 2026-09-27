@@ -84,7 +84,7 @@ Uma **Progressive Web App (PWA) ultraleve** com pegada de armazenamento inferior
 4. **Modal 📍 ONDE ESTOU?:** Bairro, ponto conhecido mais próximo, precisão do sinal GPS e botão de copiar.
 5. **Modal Uber Seguro:** Seleção do destino, visualização do endereço completo em destaque, checkbox de confirmação e botão de abertura do app nativo da Uber.
 6. **Modal Ponto de Decisão:** Interface simplificada exibida em entroncamentos (ex: Terminal).
-7. **Painel do Welbert (Companion Dashboard):** Visualização remota de status, etapa atual, nível de bateria e simulador de testes.
+7. **Painel do Welbert (Companion Dashboard):** Visualização remota de status, etapa atual, conexão GPS e simulador de testes.
 
 ---
 
@@ -150,7 +150,6 @@ CREATE TABLE active_journeys (
   current_lat DOUBLE PRECISION,
   current_lng DOUBLE PRECISION,
   accuracy_meters DOUBLE PRECISION,
-  battery_level INT,
   started_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -297,6 +296,7 @@ O menor produto viável que já resolve o problema com perfeição:
 ---
 
 ## 25. Funcionalidades que NÃO Valem a Pena (Descartadas)
+* ❌ Monitoramento e exibição de % da bateria (completamente irrelevante para a proposta de mobilidade/orientação de rota e bloqueado por privacidade pela Apple no iOS Safari).
 * ❌ Rastreamento contínuo em background 24 horas por dia (inviável em PWA, invasivo, drena bateria e gera ansiedade).
 * ❌ Renderização cartográfica 3D vetorial própria (consome centenas de MB de cache, trava o iPhone sem espaço).
 * ❌ Agente conversacional de inteligência artificial durante a emergência (a usuária nervosa precisa de botões grandes e objetivos, não de conversar com um robô).

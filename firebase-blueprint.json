@@ -29,10 +29,6 @@
           "type": "object",
           "description": "Critical 190 emergency police alert if triggered"
         },
-        "batteryLevel": {
-          "type": "number",
-          "description": "Current iPhone battery level percentage"
-        },
         "lastUpdated": {
           "type": "string",
           "format": "date-time",

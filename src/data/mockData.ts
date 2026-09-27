@@ -377,43 +377,159 @@ export const PRESET_TRIPS: PresetTrip[] = [
   },
   {
     id: 'paripueira_casa',
-    name: 'Paripueira → Casa (Clima Bom) (Domingo)',
+    name: 'Paripueira → Maceió Shopping → Casa (R. Quinze, 101) (Domingo)',
     originId: 'paripueira',
     destinationId: 'casa',
-    originName: 'Paripueira',
-    destinationName: 'Casa (Clima Bom)',
-    estimatedTotalMinutes: 60,
-    routineHint: 'Domingo • Tarde / Noite retorno a Maceió',
+    originName: 'Paripueira (R. do Angelim, 650)',
+    destinationName: 'Casa (Rua Quinze, 101)',
+    estimatedTotalMinutes: 90,
+    routineHint: 'Domingo • Retorno de Paripueira via Maceió Shopping até a Rua Quinze',
     steps: [
       {
         id: 'pc_1',
         stepNumber: 1,
         type: 'walk',
-        title: 'Dirigir-se ao ponto de Paripueira',
-        instruction: 'Vá até o ponto de ônibus intermunicipal com destino a Maceió.',
-        detail: 'Aguarde o ônibus sentido Centro / Rodoviária / Maceió.',
-        locationName: 'Ponto de Paripueira (R. do Angelim / Centro)',
-        estimatedMinutes: 10
+        title: 'Sair da R. do Angelim até o ponto em Paripueira',
+        instruction: 'Saia da R. do Angelim, 650 com calma e caminhe até o ponto do transporte intermunicipal na avenida principal de Paripueira.',
+        detail: 'Rua do Angelim sentido avenida/centro de Paripueira.',
+        locationName: 'Ponto Paripueira (R. do Angelim / Centro)',
+        distanceMeters: 200,
+        estimatedMinutes: 5
       },
       {
         id: 'pc_2',
         stepNumber: 2,
         type: 'bus',
-        title: 'Embarque sentido Maceió',
-        instruction: 'Embarque no ônibus. Se for pegar Uber a partir de Maceió, use o botão direto para a Rua Quinze.',
-        detail: 'Trajeto pela AL-101 Norte até a entrada de Maceió.',
-        locationName: 'Ônibus Intermunicipal',
+        title: 'Embarcar no Intermunicipal até o Maceió Shopping',
+        instruction: 'Embarque no ônibus ou van intermunicipal sentido Maceió (via Litoral Norte). Ao subir, confirme com o cobrador/motorista: "Desço no Maceió Shopping".',
+        detail: 'O ônibus desce pela rodovia AL-101 Norte passando por Ipioca, Guaxuma, Jacarecica e Cruz das Almas até chegar à Av. Comendador Gustavo Paiva.',
+        warningNote: 'Fique atenta quando avistar o Parque Shopping / Cruz das Almas. Logo em seguida, o ônibus entra na Mangabeiras e para em frente ao Maceió Shopping.',
+        locationName: 'Trajeto AL-101 Norte ➔ Maceió Shopping',
         estimatedMinutes: 45
       },
       {
         id: 'pc_3',
         stepNumber: 3,
-        type: 'arrive',
-        title: 'Chegada em Casa (Clima Bom)',
-        instruction: 'Bem-vinda de volta para casa! ❤️',
-        detail: 'Rua Quinze, 101, Clima Bom.',
-        locationName: 'Casa (Clima Bom)',
+        type: 'walk',
+        title: 'Descer na parada do Maceió Shopping',
+        instruction: 'Puxe a cordinha ou avise ao motorista para descer no ponto em frente ao Maceió Shopping (Av. Comendador Gustavo Paiva). Você já está em Maceió! Respire fundo ❤️',
+        detail: 'Parada de ônibus em frente ao Maceió Shopping (Mangabeiras).',
+        locationName: 'Maceió Shopping - Av. Comendador Gustavo Paiva',
+        distanceMeters: 50,
         estimatedMinutes: 5
+      },
+      {
+        id: 'pc_4',
+        stepNumber: 4,
+        type: 'bus',
+        title: 'Localizar e Embarcar no Ônibus sentido Clima Bom',
+        instruction: 'No ponto do shopping na Av. Comendador Gustavo Paiva, aguarde o ônibus sentido Clima Bom (ex: Linha 0716 - Clima Bom / Ponta Verde via Mangabeiras / Shopping, ou linha urbana com letreiro "Clima Bom"). Ao subir, confirme: "Passa perto da Rua Quinze?".',
+        detail: 'Linha 0716 ou ônibus urbano sentido Clima Bom (sobe para a parte alta de Maceió).',
+        busLine: '0716 ou Linha Clima Bom',
+        busLineName: 'Clima Bom / Ponta Verde (Via Shopping / Mangabeiras)',
+        targetPlatform: 'Ponto Av. Comendador Gustavo Paiva (em frente ao shopping)',
+        warningNote: '🚨 ATENÇÃO: Olhe o letreiro luminoso do ônibus: precisa dizer sentido "CLIMA BOM". Se preferir conforto ou já estiver cansada/noite, use o botão de Uber seguro abaixo.',
+        locationName: 'Ponto do Maceió Shopping',
+        estimatedMinutes: 10
+      },
+      {
+        id: 'pc_5',
+        stepNumber: 5,
+        type: 'bus',
+        title: 'Permanecer no Ônibus até o Clima Bom',
+        instruction: 'Fique sentada tranquila. O ônibus vai subir para a parte alta da cidade e entrar no bairro do Clima Bom. Quando começar a passar pelos comércios e pela avenida principal do bairro, prepare-se para o seu ponto.',
+        detail: 'Avenida principal do Clima Bom, trecho de acesso à Rua Quinze.',
+        warningNote: 'Pode mandar uma mensagem ou avisar o Welbert pelo WhatsApp de que já está no Clima Bom.',
+        locationName: 'Trajeto Mangabeiras ➔ Clima Bom',
+        estimatedMinutes: 25
+      },
+      {
+        id: 'pc_6',
+        stepNumber: 6,
+        type: 'walk',
+        title: 'Descer no Ponto e Caminhar até a Rua Quinze, 101',
+        instruction: 'Puxe a cordinha e desça no ponto mais próximo da Rua Quinze. Caminhe devagar e atenta até o número 101 da Rua Quinze. Qualquer dúvida, ligue direto pro Welbert!',
+        detail: 'Rua Quinze, 101 - Clima Bom, Maceió - AL, 57063-505.',
+        distanceMeters: 150,
+        locationName: 'Rua Quinze, 101, Clima Bom',
+        estimatedMinutes: 5
+      },
+      {
+        id: 'pc_7',
+        stepNumber: 7,
+        type: 'arrive',
+        title: 'Chegada em Casa (Rua Quinze, 101)! ❤️',
+        instruction: 'Você chegou em Casa (Clima Bom)! Parabéns por fazer o trajeto com calma e atenção. Tome um banho gostoso e descanse bastante para a semana. O Welbert te ama! ❤️🏠',
+        detail: 'R. Quinze, 101 - Clima Bom, Maceió - AL, 57063-505.',
+        locationName: 'Casa (Clima Bom) - R. Quinze, 101',
+        estimatedMinutes: 2
+      }
+    ]
+  },
+  {
+    id: 'maceio_shopping_casa',
+    name: 'Maceió Shopping → Casa (Rua Quinze, 101)',
+    originId: 'maceio_shopping',
+    destinationId: 'casa',
+    originName: 'Maceió Shopping',
+    destinationName: 'Casa (Rua Quinze, 101)',
+    estimatedTotalMinutes: 45,
+    routineHint: 'Retorno do shopping para Casa (Clima Bom) via Ônibus 0716 ou Uber',
+    steps: [
+      {
+        id: 'msc_1',
+        stepNumber: 1,
+        type: 'walk',
+        title: 'Dirigir-se ao ponto do Maceió Shopping',
+        instruction: 'Vá até o ponto de parada de ônibus na Av. Comendador Gustavo Paiva (em frente à entrada principal do Maceió Shopping).',
+        detail: 'Ponto na calçada do Maceió Shopping sentido Centro / Tabuleiro / Parte Alta.',
+        locationName: 'Maceió Shopping - Av. Gustavo Paiva',
+        distanceMeters: 80,
+        estimatedMinutes: 5
+      },
+      {
+        id: 'msc_2',
+        stepNumber: 2,
+        type: 'bus',
+        title: 'Embarcar no Ônibus sentido Clima Bom',
+        instruction: 'Aguarde o ônibus com destino ao Clima Bom (ex: Linha 0716 - Clima Bom / Ponta Verde via Shopping ou linha com letreiro "Clima Bom").',
+        detail: 'Confirme com o motorista antes de subir: "Passa perto da Rua Quinze?".',
+        busLine: '0716 ou Linha Clima Bom',
+        busLineName: 'Clima Bom / Ponta Verde (Via Shopping)',
+        warningNote: 'Verifique se o letreiro marca sentido "CLIMA BOM". Se a espera estiver longa, use o botão de Uber seguro.',
+        locationName: 'Ponto do Maceió Shopping',
+        estimatedMinutes: 10
+      },
+      {
+        id: 'msc_3',
+        stepNumber: 3,
+        type: 'bus',
+        title: 'Permanecer no Ônibus até o Clima Bom',
+        instruction: 'Relaxe na viagem enquanto o ônibus sobe a ladeira para a parte alta e entra no Clima Bom.',
+        detail: 'Av. Menino Marcelo / Via principal do Clima Bom.',
+        locationName: 'Trajeto Mangabeiras ➔ Clima Bom',
+        estimatedMinutes: 25
+      },
+      {
+        id: 'msc_4',
+        stepNumber: 4,
+        type: 'walk',
+        title: 'Descer e caminhar até a Rua Quinze, 101',
+        instruction: 'Puxe a cordinha e desça no ponto mais próximo da Rua Quinze. Caminhe até o número 101.',
+        detail: 'Rua Quinze, 101 - Clima Bom.',
+        distanceMeters: 150,
+        locationName: 'Rua Quinze, 101, Clima Bom',
+        estimatedMinutes: 5
+      },
+      {
+        id: 'msc_5',
+        stepNumber: 5,
+        type: 'arrive',
+        title: 'Chegada em Casa (Rua Quinze, 101)! ❤️',
+        instruction: 'Você chegou bem em casa! Bom descanso! ❤️',
+        detail: 'R. Quinze, 101 - Clima Bom, Maceió - AL, 57063-505.',
+        locationName: 'Casa (Clima Bom)',
+        estimatedMinutes: 2
       }
     ]
   }
@@ -426,9 +542,17 @@ export const MACEIO_TRANSIT_INFO = {
     'Terminal Integrado Benedito Bentes (Parte Alta)',
     'Terminal Eustáquio Gomes',
     'Campus UFAL A.C. Simões (Circular interno 4000)',
-    'Terminal Colina dos Eucaliptos'
+    'Terminal Colina dos Eucaliptos',
+    'Maceió Shopping / Mangabeiras (Conexão Litoral Norte ↔ Parte Alta)'
   ],
   verifiedLines: [
+    {
+      code: '0716',
+      name: 'Clima Bom / Ponta Verde (Via Maceió Shopping / Mangabeiras)',
+      operator: 'Cidade de Maceió / DMTT',
+      frequencyMinutes: '~30-40 min',
+      notes: 'Ligação direta entre Maceió Shopping (Mangabeiras) e o bairro Clima Bom'
+    },
     {
       code: '0901',
       name: 'Eustáquio Gomes / T.I. Benedito Bentes (Via UFAL / Hosp. Metropolitano)',

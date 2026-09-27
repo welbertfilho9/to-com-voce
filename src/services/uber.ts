@@ -59,6 +59,7 @@ export function buildUberDeepLink(
   userLng?: number
 ): string {
   const destAddress = getCleanFullAddress(destination);
+  const destTitle = getCleanPlaceTitle(destination);
   const params = new URLSearchParams();
 
   params.set('action', 'setPickup');
@@ -67,15 +68,23 @@ export function buildUberDeepLink(
   // Origin Configuration
   if (originPlace && originPlace.id !== 'current_gps') {
     const origAddress = getCleanFullAddress(originPlace);
+    params.set('pickup[latitude]', originPlace.latitude.toString());
+    params.set('pickup[longitude]', originPlace.longitude.toString());
     params.set('pickup[formatted_address]', origAddress);
-    params.set('pickup[nickname]', origAddress);
+    params.set('pickup[nickname]', getCleanPlaceTitle(originPlace));
   } else {
+    if (userLat !== undefined && userLng !== undefined) {
+      params.set('pickup[latitude]', userLat.toString());
+      params.set('pickup[longitude]', userLng.toString());
+    }
     params.set('pickup', 'my_location');
   }
 
-  // Destination Configuration
+  // Destination Configuration: Uber REQUIRED parameters for automatic destination
+  params.set('dropoff[latitude]', destination.latitude.toString());
+  params.set('dropoff[longitude]', destination.longitude.toString());
   params.set('dropoff[formatted_address]', destAddress);
-  params.set('dropoff[nickname]', destAddress);
+  params.set('dropoff[nickname]', destTitle);
 
   return `https://m.uber.com/ul/?${params.toString()}`;
 }
@@ -90,20 +99,29 @@ export function buildUberNativeSchemeLink(
   userLng?: number
 ): string {
   const destAddress = getCleanFullAddress(destination);
+  const destTitle = getCleanPlaceTitle(destination);
   const params = new URLSearchParams();
 
   params.set('action', 'setPickup');
 
   if (originPlace && originPlace.id !== 'current_gps') {
     const origAddress = getCleanFullAddress(originPlace);
+    params.set('pickup[latitude]', originPlace.latitude.toString());
+    params.set('pickup[longitude]', originPlace.longitude.toString());
     params.set('pickup[formatted_address]', origAddress);
-    params.set('pickup[nickname]', origAddress);
+    params.set('pickup[nickname]', getCleanPlaceTitle(originPlace));
   } else {
+    if (userLat !== undefined && userLng !== undefined) {
+      params.set('pickup[latitude]', userLat.toString());
+      params.set('pickup[longitude]', userLng.toString());
+    }
     params.set('pickup', 'my_location');
   }
 
+  params.set('dropoff[latitude]', destination.latitude.toString());
+  params.set('dropoff[longitude]', destination.longitude.toString());
   params.set('dropoff[formatted_address]', destAddress);
-  params.set('dropoff[nickname]', destAddress);
+  params.set('dropoff[nickname]', destTitle);
 
   return `uber://?${params.toString()}`;
 }
