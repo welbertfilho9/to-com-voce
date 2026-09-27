@@ -116,7 +116,20 @@ export const WelbertView: React.FC<WelbertViewProps> = ({
             </div>
           </div>
 
-          <div className="self-start sm:self-auto">
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <button
+              onClick={() => {
+                import('../services/cloudSync').then(({ cloudSync }) => {
+                  cloudSync.fetchLatestTelemetry();
+                });
+              }}
+              title="Buscar última atualização da nuvem"
+              className="py-1.5 px-3 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium flex items-center gap-1.5 border border-slate-700 transition-colors"
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Nuvem Ativa</span>
+              <span className="text-[10px] text-slate-400">↻</span>
+            </button>
             {getStatusBadge()}
           </div>
         </div>

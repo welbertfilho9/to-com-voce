@@ -98,15 +98,10 @@ export function saveStoredTelemetry(telemetry: CompanionTelemetry): void {
     localStorage.setItem(STORAGE_KEY_TELEMETRY, JSON.stringify(telemetry));
     window.dispatchEvent(new Event('storage'));
 
-    // Asynchronously push to backend server for remote companion sync
-    fetch('/api/telemetry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(telemetry)
-    }).catch((err) => {
-      // Offline fallback: silence network errors
-      console.log('Background cloud telemetry sync deferred:', err.message);
-    });
+    // Asynchronously push to global real-time cloud relay (Diadema <-> Maceió)
+    import('./cloudSync').then(({ cloudSync }) => {
+      cloudSync.publishTelemetry(telemetry);
+    }).catch(() => {});
   } catch (err) {
     console.warn('Storage write error for telemetry:', err);
   }

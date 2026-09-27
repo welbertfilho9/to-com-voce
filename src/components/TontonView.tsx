@@ -16,7 +16,6 @@ import {
   Plus,
   Trash2,
   ShieldAlert,
-  HelpCircle,
   Bus,
   Footprints,
   Eye
@@ -175,36 +174,24 @@ export const TontonView: React.FC<TontonViewProps> = ({
           </button>
         </div>
 
-        {/* Secondary Quick Controls: Uber & Decision helper */}
-        <div className="grid grid-cols-2 gap-2.5">
-          {/* Quick Uber */}
-          <button
-            onClick={() => onOpenUberModal()}
-            className="p-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white shadow-sm flex items-center gap-2.5 transition-all"
-          >
-            <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
-              <Car className="w-4 h-4 text-emerald-400" />
+        {/* Quick Uber / 99 Bar */}
+        <button
+          onClick={() => onOpenUberModal()}
+          className="w-full p-4 rounded-2xl bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white shadow-md shadow-slate-900/15 flex items-center justify-between transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+              <Car className="w-5 h-5 text-emerald-400" />
             </div>
             <div className="text-left min-w-0">
-              <span className="block font-bold text-xs truncate">Pedir Uber</span>
-              <span className="block text-[10px] text-slate-400 truncate">Com GPS e destino</span>
+              <span className="block font-extrabold text-sm">Pedir Uber / 99</span>
+              <span className="block text-xs text-slate-400">Origem GPS e destino já configurados</span>
             </div>
-          </button>
-
-          {/* Decision Point */}
-          <button
-            onClick={onOpenDecisionModal}
-            className="p-3.5 rounded-2xl bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-white shadow-sm flex items-center gap-2.5 transition-all"
-          >
-            <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
-              <HelpCircle className="w-4 h-4 text-white" />
-            </div>
-            <div className="text-left min-w-0">
-              <span className="block font-bold text-xs truncate">O que eu faço?</span>
-              <span className="block text-[10px] text-amber-100 truncate">Orientação rápida</span>
-            </div>
-          </button>
-        </div>
+          </div>
+          <span className="text-xs font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-lg border border-emerald-500/30">
+            Abrir App ➔
+          </span>
+        </button>
 
         {/* Botão do Pânico (Polícia 190) */}
         <button

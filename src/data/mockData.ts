@@ -3,11 +3,11 @@ import { KnownPlace, PresetTrip } from '../types';
 export const KNOWN_PLACES: KnownPlace[] = [
   {
     id: 'casa',
-    name: 'Casa (Clima Bom)',
+    name: 'Casa (Rua Quinze)',
     shortName: 'Casa',
     category: 'home',
     address: 'Rua Quinze, 101',
-    neighborhood: 'Clima Bom, Maceió - AL',
+    neighborhood: 'Clima Bom, Maceió - AL, CEP 57071-150',
     latitude: -9.5772,
     longitude: -35.7725,
     notes: 'Ponto de referência: Próximo à rua principal do Clima Bom.',
@@ -15,7 +15,7 @@ export const KNOWN_PLACES: KnownPlace[] = [
   },
   {
     id: 'orizon',
-    name: 'Orizon / Ecoparque Maceió',
+    name: 'Orizon Ecoparque Maceió',
     shortName: 'Orizon (Ecoparque)',
     category: 'work',
     address: 'Ecoparque Maceió - Estrada AL-105 / Rua Em Projeto 7257, s/n',
@@ -129,8 +129,8 @@ export const PRESET_TRIPS: PresetTrip[] = [
     name: 'Casa → Orizon (Estágio)',
     originId: 'casa',
     destinationId: 'orizon',
-    originName: 'Casa (Clima Bom)',
-    destinationName: 'Orizon / Ecoparque',
+    originName: 'Casa (Rua Quinze - Clima Bom)',
+    destinationName: 'Orizon Ecoparque Maceió',
     estimatedTotalMinutes: 45,
     routineHint: 'Segunda a Sexta • Manhã cedo (06:30 - 07:30)',
     steps: [
@@ -293,7 +293,7 @@ export const PRESET_TRIPS: PresetTrip[] = [
     originId: 'terminal_bb',
     destinationId: 'casa',
     originName: 'Terminal B. Bentes',
-    destinationName: 'Casa (Clima Bom)',
+    destinationName: 'Casa (Rua Quinze - Clima Bom)',
     estimatedTotalMinutes: 30,
     routineHint: 'Volta para casa a partir do Terminal',
     steps: [
@@ -378,7 +378,7 @@ export const PRESET_TRIPS: PresetTrip[] = [
     originId: 'paripueira',
     destinationId: 'casa',
     originName: 'Paripueira',
-    destinationName: 'Casa (Clima Bom)',
+    destinationName: 'Casa (Rua Quinze - Clima Bom)',
     estimatedTotalMinutes: 60,
     routineHint: 'Domingo • Tarde / Noite retorno a Maceió',
     steps: [

@@ -22,6 +22,8 @@ import { CreateRouteModal } from './components/CreateRouteModal';
 import { PanicPoliceModal } from './components/PanicPoliceModal';
 import { findNearestKnownPlace } from './services/geolocation';
 
+import { cloudSync } from './services/cloudSync';
+
 export default function App() {
   const [role, setRole] = useState<UserRole>('tonton');
   const [activeJourney, setActiveJourney] = useState<ActiveJourney | null>(getStoredJourney);
@@ -62,7 +64,7 @@ export default function App() {
     }
   }, []);
 
-  // Sync state changes across tabs/windows and cloud server (Diadema <-> Maceió)
+  // Sync state changes across devices (Diadema <-> Maceió) via CloudSync + Local Storage
   useEffect(() => {
     const handleStorageChange = () => {
       setActiveJourney(getStoredJourney());
@@ -70,30 +72,23 @@ export default function App() {
     };
     window.addEventListener('storage', handleStorageChange);
 
-    // If EventSource is supported, stream live updates from server
-    let eventSource: EventSource | null = null;
-    try {
-      eventSource = new EventSource('/api/telemetry/stream');
-      eventSource.onmessage = (event) => {
-        try {
-          const data = JSON.parse(event.data);
-          if (data && typeof data === 'object') {
-            setTelemetry((prev) => ({ ...prev, ...data }));
-            if (data.activeJourney !== undefined) {
-              setActiveJourney(data.activeJourney);
-            }
-          }
-        } catch {
-          // ignore stream parse errors
+    // 1. Subscribe to Cloud Real-Time Relay (instant push from Maceió to Diadema)
+    const unsubscribeCloud = cloudSync.subscribe((incoming) => {
+      if (incoming && typeof incoming === 'object') {
+        setTelemetry((prev) => ({ ...prev, ...incoming }));
+        if (incoming.activeJourney !== undefined) {
+          setActiveJourney(incoming.activeJourney);
+          saveStoredJourney(incoming.activeJourney);
         }
-      };
-    } catch (e) {
-      console.log('SSE streaming fallback to polling:', e);
-    }
+      }
+    });
+
+    // 2. Fetch latest telemetry state from cloud on boot
+    cloudSync.fetchLatestTelemetry();
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
-      eventSource?.close();
+      unsubscribeCloud();
     };
   }, []);
 
