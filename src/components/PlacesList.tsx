@@ -81,6 +81,18 @@ export const PlacesList: React.FC<PlacesListProps> = ({
                   Uber Seguro
                 </button>
               </div>
+
+              {place.googleMapsUrl && (
+                <a
+                  href={place.googleMapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 py-1 px-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-600 hover:text-slate-900 text-[11px] font-medium flex items-center justify-center gap-1 transition-colors border border-slate-200"
+                >
+                  <ExternalLink className="w-3 h-3 text-indigo-600" />
+                  <span>Abrir no Google Maps</span>
+                </a>
+              )}
             </div>
           );
         })}

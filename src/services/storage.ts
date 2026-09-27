@@ -95,10 +95,14 @@ export function getStoredTelemetry(): CompanionTelemetry {
 
 export function saveStoredTelemetry(telemetry: CompanionTelemetry): void {
   try {
-    localStorage.setItem(STORAGE_KEY_TELEMETRY, JSON.stringify(telemetry));
-    window.dispatchEvent(new Event('storage'));
+    // 1. Push to Google Cloud Firestore (Instant cross-device real-time sync)
+    import('./firebase').then(({ saveTelemetryToCloud }) => {
+      saveTelemetryToCloud(telemetry);
+    }).catch((err) => {
+      console.warn('Firebase sync error:', err);
+    });
 
-    // Asynchronously push to global real-time cloud relay (Diadema <-> Maceió)
+    // 2. Push to global real-time cloud relay as secondary redundancy
     import('./cloudSync').then(({ cloudSync }) => {
       cloudSync.publishTelemetry(telemetry);
     }).catch(() => {});

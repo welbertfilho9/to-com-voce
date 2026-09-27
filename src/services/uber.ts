@@ -6,12 +6,12 @@ import { KnownPlace } from '../types';
  * ensuring Uber, 99 and Google Maps route directly to the exact street address and coordinates.
  */
 export function getCleanFullAddress(place: KnownPlace): string {
-  // If place is Casa, return the full verified street address
+  // Exact verified addresses matching Google Maps
   if (place.id === 'casa') {
-    return 'Rua Quinze, 101, Clima Bom, Maceió - AL, 57071-150';
+    return 'R. Quinze, 101 - Clima Bom, Maceió - AL, 57063-505';
   }
   if (place.id === 'orizon') {
-    return 'Ecoparque Maceió - Estrada AL-105 / Rua Em Projeto 7257, s/n, Benedito Bentes, Maceió - AL, 57084-415';
+    return 'Ecoparque Maceió - Benedito Bentes, Maceió - AL';
   }
   if (place.id === 'terminal_bb') {
     return 'Av. Cachoeira do Meirim, s/n, Benedito Bentes, Maceió - AL, 57084-000';
@@ -26,8 +26,8 @@ export function getCleanFullAddress(place: KnownPlace): string {
  * Returns a clean business/building name without informal notes or brackets
  */
 export function getCleanPlaceTitle(place: KnownPlace): string {
-  if (place.id === 'casa') return 'Rua Quinze, 101 (Residência)';
-  if (place.id === 'orizon') return 'Ecoparque Maceió (Orizon)';
+  if (place.id === 'casa') return 'Casa';
+  if (place.id === 'orizon') return 'Ecoparque Maceió';
   if (place.id === 'terminal_bb') return 'Terminal Integrado Benedito Bentes';
   if (place.id === 'ufal') return 'Universidade Federal de Alagoas (UFAL)';
   return place.name.replace(/\s*\([^)]*\)/g, '').trim();

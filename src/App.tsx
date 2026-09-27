@@ -23,6 +23,11 @@ import { PanicPoliceModal } from './components/PanicPoliceModal';
 import { findNearestKnownPlace } from './services/geolocation';
 
 import { cloudSync } from './services/cloudSync';
+import {
+  subscribeToLiveTelemetry,
+  fetchLiveTelemetryOnce,
+  validateFirestoreConnection
+} from './services/firebase';
 
 export default function App() {
   const [role, setRole] = useState<UserRole>('tonton');
@@ -45,6 +50,11 @@ export default function App() {
   const [createRouteModalOpen, setCreateRouteModalOpen] = useState(false);
   const [panicPoliceModalOpen, setPanicPoliceModalOpen] = useState(false);
 
+  // Validate Firestore connection on boot
+  useEffect(() => {
+    validateFirestoreConnection();
+  }, []);
+
   // Real GPS listener if allowed by device
   useEffect(() => {
     if ('geolocation' in navigator) {
@@ -64,7 +74,7 @@ export default function App() {
     }
   }, []);
 
-  // Sync state changes across devices (Diadema <-> Maceió) via CloudSync + Local Storage
+  // Sync state changes across devices (Diadema <-> Maceió) via Firebase Firestore + Cloud Relay + Local Storage
   useEffect(() => {
     const handleStorageChange = () => {
       setActiveJourney(getStoredJourney());
@@ -72,7 +82,29 @@ export default function App() {
     };
     window.addEventListener('storage', handleStorageChange);
 
-    // 1. Subscribe to Cloud Real-Time Relay (instant push from Maceió to Diadema)
+    // 1. Primary: Subscribe to Google Cloud Firestore (Instant sub-second real-time sync across devices)
+    const unsubscribeFirestore = subscribeToLiveTelemetry((incoming) => {
+      if (incoming && typeof incoming === 'object') {
+        setTelemetry((prev) => ({ ...prev, ...incoming }));
+        if (incoming.activeJourney !== undefined) {
+          setActiveJourney(incoming.activeJourney);
+          saveStoredJourney(incoming.activeJourney);
+        }
+      }
+    });
+
+    // 2. Fetch latest telemetry snapshot on startup
+    fetchLiveTelemetryOnce().then((cloudData) => {
+      if (cloudData && typeof cloudData === 'object') {
+        setTelemetry((prev) => ({ ...prev, ...cloudData }));
+        if (cloudData.activeJourney !== undefined) {
+          setActiveJourney(cloudData.activeJourney);
+          saveStoredJourney(cloudData.activeJourney);
+        }
+      }
+    });
+
+    // 3. Redundancy: Subscribe to Cloud Relay
     const unsubscribeCloud = cloudSync.subscribe((incoming) => {
       if (incoming && typeof incoming === 'object') {
         setTelemetry((prev) => ({ ...prev, ...incoming }));
@@ -83,11 +115,9 @@ export default function App() {
       }
     });
 
-    // 2. Fetch latest telemetry state from cloud on boot
-    cloudSync.fetchLatestTelemetry();
-
     return () => {
       window.removeEventListener('storage', handleStorageChange);
+      unsubscribeFirestore();
       unsubscribeCloud();
     };
   }, []);

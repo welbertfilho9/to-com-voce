@@ -3,27 +3,29 @@ import { KnownPlace, PresetTrip } from '../types';
 export const KNOWN_PLACES: KnownPlace[] = [
   {
     id: 'casa',
-    name: 'Casa (Rua Quinze)',
+    name: 'Casa',
     shortName: 'Casa',
     category: 'home',
-    address: 'Rua Quinze, 101',
-    neighborhood: 'Clima Bom, Maceió - AL, CEP 57071-150',
-    latitude: -9.5772,
-    longitude: -35.7725,
-    notes: 'Ponto de referência: Próximo à rua principal do Clima Bom.',
-    icon: '🏠'
+    address: 'R. Quinze, 101',
+    neighborhood: 'Clima Bom, Maceió - AL, 57063-505',
+    latitude: -9.5807825,
+    longitude: -35.7773553,
+    notes: 'Rua Quinze, 101 - Clima Bom, Maceió - AL, CEP 57063-505',
+    icon: '🏠',
+    googleMapsUrl: 'https://maps.app.goo.gl/yoABWFNLCyvJA3QF6'
   },
   {
     id: 'orizon',
-    name: 'Orizon Ecoparque Maceió',
-    shortName: 'Orizon (Ecoparque)',
+    name: 'Ecoparque Maceió (Orizon)',
+    shortName: 'Ecoparque Maceió',
     category: 'work',
-    address: 'Ecoparque Maceió - Estrada AL-105 / Rua Em Projeto 7257, s/n',
-    neighborhood: 'Benedito Bentes, Maceió - AL, CEP 57084-415',
-    latitude: -9.5583,
-    longitude: -35.6880,
-    notes: 'Local do estágio no Ecoparque Maceió (CTR Benedito Bentes). Início às 08:00. Saída da van às 14:00 para o Terminal.',
-    icon: '🏢'
+    address: 'Ecoparque Maceió - Unnamed Road',
+    neighborhood: 'Benedito Bentes, Maceió - AL',
+    latitude: -9.556395,
+    longitude: -35.7281169,
+    notes: 'Ecoparque Maceió no Benedito Bentes (Orizon). Estágio com van às 14:00 para o Terminal.',
+    icon: '🏢',
+    googleMapsUrl: 'https://maps.app.goo.gl/o35e8oruWg2BwThM8?g_st=ac'
   },
   {
     id: 'terminal_bb',

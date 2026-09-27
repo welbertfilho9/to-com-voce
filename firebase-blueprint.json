@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "TelemetryState": {
+      "title": "Telemetry State",
+      "description": "Live real-time companion telemetry shared between Antonella in Maceió and Welbert in Diadema",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Telemetry document identifier (e.g. 'live')"
+        },
+        "isSharing": {
+          "type": "boolean",
+          "description": "Whether live trip sharing is currently active"
+        },
+        "activeJourney": {
+          "type": "object",
+          "description": "Current active journey details including origin, destination, and step"
+        },
+        "lastKnownLocation": {
+          "type": "object",
+          "description": "Current GPS coordinates and nearest recognized reference place in Maceió"
+        },
+        "sosAlert": {
+          "type": "object",
+          "description": "Lost/SOS alert state if triggered by Antonella"
+        },
+        "policePanicAlert": {
+          "type": "object",
+          "description": "Critical 190 emergency police alert if triggered"
+        },
+        "batteryLevel": {
+          "type": "number",
+          "description": "Current iPhone battery level percentage"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp of the latest telemetry packet"
+        }
+      },
+      "required": ["id", "isSharing", "lastUpdated"]
+    }
+  },
+  "firestore": {
+    "/telemetry/{telemetryId}": {
+      "schema": "TelemetryState",
+      "description": "Real-time telemetry document accessed by Antonella (creator/sender) and Welbert (companion viewer)"
+    }
+  }
+}

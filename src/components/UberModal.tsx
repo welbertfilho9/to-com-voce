@@ -75,7 +75,7 @@ export const UberModal: React.FC<UberModalProps> = ({
   const uberUniversalLink = buildUberDeepLink(destinationPlace, originPlace, currentLat, currentLng);
   const uberNativeScheme = buildUberNativeSchemeLink(destinationPlace, originPlace, currentLat, currentLng);
   const app99Link = build99DeepLink(destinationPlace, currentLat, currentLng);
-  const gmapsLink = buildGoogleMapsRouteLink(destinationPlace, originPlace, currentLat, currentLng);
+  const gmapsLink = destinationPlace.googleMapsUrl || buildGoogleMapsRouteLink(destinationPlace, originPlace, currentLat, currentLng);
   const wazeLink = buildWazeLink(destinationPlace);
 
   const handleCopyDestAddress = () => {

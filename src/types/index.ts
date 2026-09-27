@@ -13,6 +13,7 @@ export interface KnownPlace {
   longitude: number;
   notes?: string;
   icon: string;
+  googleMapsUrl?: string;
 }
 
 export type StepType = 'walk' | 'bus' | 'van' | 'decision' | 'arrive';
