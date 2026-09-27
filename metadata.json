@@ -1,0 +1,6 @@
+{
+  "name": "Estou com Você - Copiloto de Deslocamento",
+  "description": "Copiloto pessoal de orientação urbana e segurança para deslocamentos em Maceió, com rotinas inteligentes, pontos de decisão simplificados e acompanhamento à distância com respeito à privacidade.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
