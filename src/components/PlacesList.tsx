@@ -52,8 +52,8 @@ export const PlacesList: React.FC<PlacesListProps> = ({
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-600 mt-2 font-medium">
-                  {place.address}
+                <p className="text-xs text-slate-700 mt-2 font-medium">
+                  {place.address} — {place.neighborhood}
                 </p>
 
                 {place.notes && (

@@ -8,24 +8,24 @@ export const KNOWN_PLACES: KnownPlace[] = [
     category: 'home',
     address: 'R. Quinze, 101',
     neighborhood: 'Clima Bom, Maceió - AL, 57063-505',
-    latitude: -9.5807825,
-    longitude: -35.7773553,
-    notes: 'Rua Quinze, 101 - Clima Bom, Maceió - AL, CEP 57063-505',
+    latitude: -9.5806165,
+    longitude: -35.7859235,
+    notes: 'R. Quinze, 101 - Clima Bom, Maceió - AL, 57063-505',
     icon: '🏠',
-    googleMapsUrl: 'https://maps.app.goo.gl/yoABWFNLCyvJA3QF6'
+    googleMapsUrl: 'https://maps.app.goo.gl/K19FWyw3wnwGwuT67?g_st=ac'
   },
   {
     id: 'orizon',
-    name: 'Ecoparque Maceió (Orizon)',
-    shortName: 'Ecoparque Maceió',
+    name: 'Orizon (Ecoparque Maceió)',
+    shortName: 'Orizon',
     category: 'work',
-    address: 'Ecoparque Maceió - Unnamed Road',
+    address: 'Unnamed Road',
     neighborhood: 'Benedito Bentes, Maceió - AL',
     latitude: -9.556395,
     longitude: -35.7281169,
-    notes: 'Ecoparque Maceió no Benedito Bentes (Orizon). Estágio com van às 14:00 para o Terminal.',
+    notes: 'Unnamed Road - Benedito Bentes, Maceió - AL. Estágio Orizon.',
     icon: '🏢',
-    googleMapsUrl: 'https://maps.app.goo.gl/o35e8oruWg2BwThM8?g_st=ac'
+    googleMapsUrl: 'https://maps.app.goo.gl/JNkffNj8avAdyx138?g_st=ac'
   },
   {
     id: 'terminal_bb',
@@ -56,13 +56,13 @@ export const KNOWN_PLACES: KnownPlace[] = [
     name: 'Paripueira (Fim de Semana)',
     shortName: 'Paripueira',
     category: 'weekend',
-    address: 'R. do Angelim, 650, Paripueira - AL, 57935-000',
-    neighborhood: 'Paripueira - Litoral Norte, AL',
-    latitude: -9.4584,
-    longitude: -35.5453,
-    notes: 'R. do Angelim, 650, Paripueira - AL, 57935-000. Ônibus sai da UFAL na sexta-feira às 22:00.',
+    address: 'R. do Angelim, 650',
+    neighborhood: 'Paripueira - AL, 57935-000',
+    latitude: -9.4588859,
+    longitude: -35.5434108,
+    notes: 'R. do Angelim, 650, Paripueira - AL, 57935-000.',
     icon: '🌴',
-    googleMapsUrl: 'https://maps.app.goo.gl/H2rjVdZ241oJJb5SA?g_st=ac'
+    googleMapsUrl: 'https://maps.app.goo.gl/iD6XBagvTPHdpCb7A?g_st=ac'
   },
   {
     id: 'patio_maceio',

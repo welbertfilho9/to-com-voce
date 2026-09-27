@@ -201,7 +201,7 @@ export const UberModal: React.FC<UberModalProps> = ({
             <div className="flex items-center justify-between">
               <span className="text-[11px] font-bold text-indigo-900 uppercase tracking-wider flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5 text-indigo-600" />
-                Endereço Oficial enviado ao Motorista:
+                Endereço enviado ao Uber / Motorista:
               </span>
               <button
                 type="button"
@@ -212,10 +212,7 @@ export const UberModal: React.FC<UberModalProps> = ({
                 {copiedDest ? 'Copiado!' : 'Copiar'}
               </button>
             </div>
-            <p className="text-xs font-extrabold text-slate-900">
-              {destCleanTitle}
-            </p>
-            <p className="text-xs text-slate-700 font-medium">
+            <p className="text-xs font-mono font-bold text-slate-900 bg-white p-2.5 rounded-xl border border-indigo-200 break-words">
               {destCleanAddress}
             </p>
           </div>
@@ -233,7 +230,10 @@ export const UberModal: React.FC<UberModalProps> = ({
             <a
               href={uberUniversalLink}
               target="_top"
-              onClick={() => setTimeout(onClose, 1000)}
+              onClick={() => {
+                handleCopyDestAddress();
+                setTimeout(onClose, 1200);
+              }}
               className="w-full py-4 px-4 rounded-2xl bg-black hover:bg-slate-800 text-white font-black text-sm shadow-xl shadow-black/25 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]"
             >
               <Car className="w-5 h-5 text-white" />

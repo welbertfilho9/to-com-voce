@@ -14,7 +14,7 @@ export function getCleanFullAddress(place: KnownPlace): string {
     return 'R. do Angelim, 650, Paripueira - AL, 57935-000';
   }
   if (place.id === 'orizon') {
-    return 'Ecoparque Maceió - Benedito Bentes, Maceió - AL';
+    return 'Unnamed Road - Benedito Bentes, Maceió - AL';
   }
   if (place.id === 'terminal_bb') {
     return 'Av. Cachoeira do Meirim, s/n, Benedito Bentes, Maceió - AL, 57084-000';
@@ -29,9 +29,9 @@ export function getCleanFullAddress(place: KnownPlace): string {
  * Returns a clean business/building name without informal notes or brackets
  */
 export function getCleanPlaceTitle(place: KnownPlace): string {
-  if (place.id === 'casa') return 'Casa (Clima Bom)';
-  if (place.id === 'paripueira') return 'Paripueira';
-  if (place.id === 'orizon') return 'Ecoparque Maceió';
+  if (place.id === 'casa') return 'R. Quinze, 101 - Clima Bom';
+  if (place.id === 'paripueira') return 'R. do Angelim, 650 - Paripueira';
+  if (place.id === 'orizon') return 'Unnamed Road - Benedito Bentes';
   if (place.id === 'terminal_bb') return 'Terminal Integrado Benedito Bentes';
   if (place.id === 'ufal') return 'Universidade Federal de Alagoas (UFAL)';
   return place.name.replace(/\s*\([^)]*\)/g, '').trim();
@@ -61,7 +61,6 @@ export function buildUberDeepLink(
   userLng?: number
 ): string {
   const destAddress = getCleanFullAddress(destination);
-  const destTitle = getCleanPlaceTitle(destination);
   const params = new URLSearchParams();
 
   params.set('action', 'setPickup');
@@ -74,7 +73,7 @@ export function buildUberDeepLink(
     params.set('pickup[latitude]', originPlace.latitude.toString());
     params.set('pickup[longitude]', originPlace.longitude.toString());
     params.set('pickup[formatted_address]', origAddress);
-    params.set('pickup[nickname]', getCleanPlaceTitle(originPlace));
+    params.set('pickup[nickname]', origAddress);
   } else {
     // Automatic GPS location
     if (userLat !== undefined && userLng !== undefined) {
@@ -84,11 +83,13 @@ export function buildUberDeepLink(
     params.set('pickup', 'my_location');
   }
 
-  // Destination Configuration (Exact verified street address)
+  // Destination Configuration: Must use the exact physical street address
+  // Setting dropoff[nickname] to the actual address ensures the Uber app
+  // does not overwrite the destination field with a generic label like "Casa (Clima Bom)"
   params.set('dropoff[latitude]', destination.latitude.toString());
   params.set('dropoff[longitude]', destination.longitude.toString());
   params.set('dropoff[formatted_address]', destAddress);
-  params.set('dropoff[nickname]', destTitle);
+  params.set('dropoff[nickname]', destAddress);
 
   return `https://m.uber.com/ul/?${params.toString()}`;
 }
@@ -103,15 +104,16 @@ export function buildUberNativeSchemeLink(
   userLng?: number
 ): string {
   const destAddress = getCleanFullAddress(destination);
-  const destTitle = getCleanPlaceTitle(destination);
   const params = new URLSearchParams();
 
   params.set('action', 'setPickup');
 
   if (originPlace && originPlace.id !== 'current_gps') {
+    const origAddress = getCleanFullAddress(originPlace);
     params.set('pickup[latitude]', originPlace.latitude.toString());
     params.set('pickup[longitude]', originPlace.longitude.toString());
-    params.set('pickup[formatted_address]', getCleanFullAddress(originPlace));
+    params.set('pickup[formatted_address]', origAddress);
+    params.set('pickup[nickname]', origAddress);
   } else {
     if (userLat !== undefined && userLng !== undefined) {
       params.set('pickup[latitude]', userLat.toString());
@@ -123,7 +125,7 @@ export function buildUberNativeSchemeLink(
   params.set('dropoff[latitude]', destination.latitude.toString());
   params.set('dropoff[longitude]', destination.longitude.toString());
   params.set('dropoff[formatted_address]', destAddress);
-  params.set('dropoff[nickname]', destTitle);
+  params.set('dropoff[nickname]', destAddress);
 
   return `uber://?${params.toString()}`;
 }
